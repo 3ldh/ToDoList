@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/todolistView_ImgBackground"
         android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_height="80dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
@@ -19,47 +18,89 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@color/colorPrimary" />
 
-    <TextView
-        android:id="@+id/todolistView_NameText"
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginStart="8dp"
-        android:text="Name"
-        android:textSize="18sp"
+    <ImageView
+        android:id="@+id/todolistview_dateImg"
+        android:layout_width="80dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="4dp"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="@+id/todolistView_ImgBackground"
         app:layout_constraintStart_toStartOf="@+id/todolistView_ImgBackground"
+        app:layout_constraintTop_toTopOf="@+id/todolistView_ImgBackground"
+        app:srcCompat="@drawable/icon_calendar" />
+
+    <TextView
+        android:id="@+id/todolistview_monthText"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="14dp"
+        android:text="Dec"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/todolistview_dateImg"
+        app:layout_constraintStart_toStartOf="@+id/todolistview_dateImg"
         app:layout_constraintTop_toTopOf="@+id/todolistView_ImgBackground" />
 
     <TextView
-        android:id="@+id/todolistView_MessageText"
+        android:id="@+id/todolistview_dayText"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="TextView"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/todolistView_ImgBackground"
-        app:layout_constraintEnd_toStartOf="@+id/floatingButnSaveTodo"
-        app:layout_constraintStart_toEndOf="@+id/todolistView_NameText"
+        android:layout_marginTop="2dp"
+        android:text="31"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/todolistview_dateImg"
+        app:layout_constraintEnd_toEndOf="@+id/todolistview_dateImg"
+        app:layout_constraintStart_toStartOf="@+id/todolistview_dateImg"
+        app:layout_constraintTop_toBottomOf="@+id/todolistview_monthText" />
+
+    <TextView
+        android:id="@+id/todolistview_nameText"
+        android:layout_width="0dp"
+        android:layout_height="25dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Name"
+        android:textAlignment="viewStart"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/todolistview_floatingBtnDone"
+        app:layout_constraintStart_toEndOf="@+id/todolistview_dateImg"
         app:layout_constraintTop_toTopOf="@+id/todolistView_ImgBackground" />
 
+    <TextView
+        android:id="@+id/todolistview_messageText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="6dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:maxLines="3"
+        android:text="Cool message"
+        android:textSize="12sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="@+id/todolistView_ImgBackground"
+        app:layout_constraintEnd_toStartOf="@+id/todolistview_floatingBtnDone"
+        app:layout_constraintStart_toEndOf="@+id/todolistview_dateImg"
+        app:layout_constraintTop_toBottomOf="@+id/todolistview_nameText" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingButnSaveTodo"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_margin="16dp"
+        android:id="@+id/todolistview_floatingBtnDone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         android:clickable="true"
-        android:src="@drawable/ic_done"
-        app:layout_anchorGravity="bottom|right|end"
         app:layout_constraintBottom_toBottomOf="@+id/todolistView_ImgBackground"
         app:layout_constraintEnd_toEndOf="@+id/todolistView_ImgBackground"
-        app:layout_constraintTop_toTopOf="@+id/todolistView_ImgBackground" />
+        app:layout_constraintTop_toTopOf="@+id/todolistView_ImgBackground"
+        app:srcCompat="@drawable/ic_done" />
+
 
 </android.support.constraint.ConstraintLayout>

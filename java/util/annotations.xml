@@ -1,0 +1,8 @@
+<root>
+    <item
+        name='java.util.Collections void sort(java.util.List&lt;T&gt;, java.util.Comparator&lt;? super T&gt;)'>
+        <annotation name='org.jetbrains.annotations.Contract'>
+            <val val="&quot;_, null -&gt; fail&quot;" />
+        </annotation>
+    </item>
+</root>
