@@ -21,8 +21,6 @@ import com.google.firebase.database.DataSnapshot
 import android.util.Log
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.FirebaseDatabase
-import kotlinx.android.synthetic.main.activity_main.view.*
-import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.widget.helper.ItemTouchHelper
 
 
@@ -47,15 +45,11 @@ class MainActivity : AppCompatActivity() {
 
         val swipeHandler = object : SwipeToDeleteCallback(this) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-              //  val adapter = main_recyclerView.adapter as TodoListAdapter
                 deleteTodo(viewHolder.adapterPosition)
             }
         }
         val itemTouchHelper = ItemTouchHelper(swipeHandler)
         itemTouchHelper.attachToRecyclerView(main_recyclerView)
-
-     //   addItemBtn.setOnClickListener(this)
-
     }
 
     fun addTodo(view: View) {
@@ -63,8 +57,7 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun deleteTodo(position: Int)
-    {
+    fun deleteTodo(position: Int) {
         val database = FirebaseDatabase.getInstance()
         database.getReference(FirebaseAuth.getInstance().currentUser?.uid).child(todoList[position].id).removeValue()
         todoList.removeAt(position)
@@ -82,6 +75,7 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         val database = FirebaseDatabase.getInstance()
+        main_spinner.visibility = View.VISIBLE
         database.getReference(FirebaseAuth.getInstance().currentUser?.uid).addListenerForSingleValueEvent(
                 object : ValueEventListener {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -91,13 +85,15 @@ class MainActivity : AppCompatActivity() {
                         dataSnapshot.children
                                 .map { it.getValue(Todo::class.java) }
                                 .mapTo(todoList) { it!! }
-                        val comparator = StringDateComparator()
+                        val comparator = TodoCompare()
                         Collections.sort(todoList, comparator)
                         main_recyclerView.adapter.notifyDataSetChanged()
+                        main_spinner.visibility = View.GONE
                     }
 
                     override fun onCancelled(databaseError: DatabaseError) {
                         Log.w("TodoApp", "getUser:onCancelled", databaseError.toException())
+                        main_spinner.visibility = View.GONE
                     }
                 })
     }

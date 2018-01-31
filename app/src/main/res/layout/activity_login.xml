@@ -7,6 +7,18 @@
     tools:context="com.mathieu.sauvau.todolist.LoginActivity">
 
     <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        app:layout_constraintBottom_toTopOf="@+id/sign_in_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_icon_todolist"
+        app:layout_constraintVertical_bias="0.401"
+        app:srcCompat="@color/colorAccent" />
+
+    <ImageView
         android:id="@+id/login_icon_todolist"
         android:layout_width="200dp"
         android:layout_height="200dp"
@@ -20,34 +32,58 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/icon_todolist" />
 
-    <com.google.android.gms.common.SignInButton
+    <com.shobhitpuri.custombuttons.GoogleSignInButton
         android:id="@+id/sign_in_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/common_signin_button_text_long"
+        app:isDarkTheme="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </com.shobhitpuri.custombuttons.GoogleSignInButton>
+
+    <TextView
+        android:id="@+id/login_appName"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="casual"
+        android:text="TodoList"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/login_catchPhrase"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_welcometext">
-
-    </com.google.android.gms.common.SignInButton>
-
-    <TextView
-        android:id="@+id/login_welcometext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="64dp"
-        android:text="Do What you have To Do List"
+        android:layout_marginTop="12dp"
+        android:fontFamily="casual"
+        android:text="Do what you have todolist"
         android:textAlignment="center"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_icon_todolist" />
+        app:layout_constraintTop_toBottomOf="@+id/login_appName" />
 
 </android.support.constraint.ConstraintLayout>

@@ -2,11 +2,9 @@ package com.mathieu.sauvau.todolist
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.firebase.auth.FirebaseAuth
-import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import android.content.Intent
@@ -35,21 +33,7 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         configureSignIn()
-
-        sign_in_button.setOnClickListener({logInWithGoogle()})
-        /*mAuthListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
-            // Get signedIn user
-            user = firebaseAuth.currentUser
-            //if user is signed in, we call a helper method to save the user details to Firebase
-            if (user != null) {
-                // User is signed in
-                //createUserInFirebaseHelper()
-                Log.d(TAG, "onAuthStateChanged : signed_in :" + user!!.uid)
-            } else {
-                // User is signed out
-                Log.d(TAG, "onAuthStateChanged : signed_out")
-            }
-        }*/
+        sign_in_button.setOnClickListener({ logInWithGoogle() })
     }
 
     // This method configures Google SignIn
@@ -64,11 +48,9 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
 
     private fun logInWithGoogle() {
         if (user == null) {
-            Log.e(TAG, "YOLO NULL USER : $user")
             val signInIntent = mGoogleSignInClient.signInIntent
             startActivityForResult(signInIntent, RC_SIGN_IN)
         } else {
-            Log.e(TAG, "USER : $user")
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
@@ -81,16 +63,6 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
             if (result.isSuccessful) {
                 // Google Sign In was successful, save Token and a state then authenticate with Firebase
                 googleAccount = result.result
-
-                /*sharedPrefManager = SharedPrefManager(mContext);
-                // Save Data to SharedPreference
-                sharedPrefManager = new SharedPrefManager(mContext)
-                sharedPrefManager.saveIsLoggedIn(mContext, true)
-                sharedPrefManager.saveEmail(mContext, email)
-                sharedPrefManager.saveName(mContext, name)
-                sharedPrefManager.savePhoto(mContext, photo)
-                sharedPrefManager.saveToken(mContext, idToken)*/
-                //sharedPrefManager.saveIsLoggedIn(mContext, true);
                 val credential = GoogleAuthProvider.getCredential(googleAccount.idToken, null)
                 firebaseAuthWithGoogle(credential)
             } else {
@@ -111,7 +83,6 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
                 .addOnCompleteListener(this) { task ->
                     Log.d(TAG, "signInWithCredential:onComplete:" + task.isSuccessful)
                     if (task.isSuccessful) {
-//                        createUserInFirebaseHelper()
                         Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
                         user = mAuth.currentUser
                         print("USER : $user")
@@ -128,17 +99,6 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
                 }
     }
 
-/*    override fun onStart() {
-        super.onStart()
-        mAuth.addAuthStateListener(mAuthListener)
-    }
-
-    override fun onStop() {
-        super.onStop()
-        mAuth.removeAuthStateListener(mAuthListener)
-    }*/
-
     override fun onConnectionFailed(p0: ConnectionResult) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
