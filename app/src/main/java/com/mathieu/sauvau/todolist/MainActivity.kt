@@ -1,5 +1,6 @@
 package com.mathieu.sauvau.todolist
 
+import android.app.AlarmManager
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -22,6 +23,10 @@ import android.util.Log
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.FirebaseDatabase
 import android.support.v7.widget.helper.ItemTouchHelper
+import android.app.PendingIntent
+import android.content.pm.PackageManager
+import android.content.ComponentName
+import android.content.Context
 
 
 class MainActivity : AppCompatActivity() {
@@ -50,6 +55,7 @@ class MainActivity : AppCompatActivity() {
         }
         val itemTouchHelper = ItemTouchHelper(swipeHandler)
         itemTouchHelper.attachToRecyclerView(main_recyclerView)
+
     }
 
     fun addTodo(view: View) {

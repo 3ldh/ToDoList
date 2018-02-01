@@ -15,7 +15,7 @@ import android.support.v4.content.ContextCompat
 /**
  * Created by eldh on 31/01/2018.
  */
-class PushNotificationService : FirebaseMessagingService() {
+class FirebasePushNotificationService : FirebaseMessagingService() {
 
     override fun onMessageReceived(remoteMessage: RemoteMessage?) {
         Log.d(TAG, "From: " + remoteMessage!!.from!!)
